@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="my-5 text-center">Available Configurations</h1> 
+    
+    <div class="row row-cols  g-2 p-5 d-flex justify-content-center">
+        {% for config in configs %}
+        <div class="col col-lg-3 col-5 mr-3">
+            <div class="p-3 border">
+                
+                <a href="{% url 'configdetail' pk=config.id %}"> <h3>{{config.input_data}}</h3>
+                {{config.output|truncatechars:15}}</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="d-flex justify-content-center">
+        <a href="{% url 'addconfig' %}" class="btn btn-primary m-5 p-3">Add config</a>
+    </div>
+
+
+{% endblock %}
